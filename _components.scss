@@ -1,0 +1,222 @@
+/*
+Les composants stylés, modules, morceaux d’interface... Comme pour la précédente, seuls des sélecteurs de classe y sont autorisés.
+*/
+
+// HEADER
+.navbar {
+    min-height: 100vh;
+    background-image: url(assets/header-bg-2x.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @extend %horizontal-list;
+    display: none;
+    &.is-active {
+        @include centerflex();
+    }
+    &__item {
+        font-size: $spacing_extra;
+        margin: $spacing_big 0;
+      &:hover,
+      &:visited {
+          text-decoration: underline;
+      }
+    }
+}
+@media screen and (max-width:48em) and (orientation:landscape) {
+    .navbar__item {
+        font-size: 2vw;
+    }
+}
+@media screen and (min-width:769px) {
+    .navbar { 
+        background-color: rgba($gray-darker, .8);
+        background-image: inherit;
+        min-height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        &__item {
+            font-size: $spacing_medium;
+        }
+    }
+}
+.header {
+    position: fixed;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 0;    
+    background-color: rgba($black, .75);
+    box-shadow: 0 0 6px 1px $gray;
+}
+.navbar-burger {
+    color: $color-white;
+    cursor: pointer;
+    display: block;
+    height: 3.25rem;
+    position: relative;
+    width: 3.25rem;
+    margin-left: auto;
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    border: 1px solid $black;
+    & span {
+        background-color: currentColor;
+        display: block;
+        height: 2px;
+        left: calc(50% - 10px);
+        position: absolute;
+        transform-origin: center;
+        transition-duration: 86ms;
+        transition-property: background-color,opacity,transform;
+        transition-timing-function: ease-out;
+        width: 20px;
+        border: 1px solid $black;
+    }
+}
+.navbar-burger span:nth-child(1) {
+    top: calc(50% - 6px);
+}
+.navbar-burger span:nth-child(2) {
+    top: 50%;
+}
+.navbar-burger span:nth-child(3) {
+    top: calc(50% + 6px);
+}
+.navbar-burger.is-active span {
+    border-color: transparent;
+}
+.navbar-burger.is-active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.navbar-burger.is-active span:nth-child(2) {
+    opacity: 0;
+}
+.navbar-burger.is-active span:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+}
+.navbar__link {
+    color: $color-white;
+}
+@media screen and (min-width:769px) {
+    .navbar-burger {
+        display: none;
+    }
+}
+
+// SECTION 1 
+.section-one {
+    background-image: url(assets/header-bg-2x.png);
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 56vmin;
+    overflow: hidden;
+    & .img {
+        margin: $spacing_giga*3 auto;
+        display: block;
+        max-width: 80vw;
+        transition: all .5s ease-in-out;
+    }
+}
+@media screen and (max-width:400px) {
+    .section-one {
+        min-height: 50vh;
+    }
+}
+.section--full {
+    margin-left: -2rem;
+    margin-right: -2rem;
+}
+
+// SECTION 2
+@media screen and (min-width:769px) {
+    .section-description {
+        & .description__text {
+            padding-right: $spacing_extra;
+        }
+        & .img {
+            position: sticky;
+            top: $spacing_medium;
+        }
+    }
+    .section-one {
+        background-size: cover;
+        min-height: 100vh;
+    }
+    .img-floated {
+        float: left;
+        max-width: 45%;
+        margin: 0 $spacing_big $spacing_big 0;
+    }
+}
+
+// SECTION LAST
+.section--stormtroopers {
+    background-image: url(assets/stormtroopers-2x.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 30rem;
+    margin-bottom: 0;
+}
+
+// FOOTER
+.footer {
+    background-color: $black-footer;
+}
+.footer--wrapper {
+    background-image: url(assets/darthvader_2x.jpg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 25rem;
+    color: $gray-lighter;
+    font-size: 1.4rem;
+    padding: $spacing_big;
+    & .col {    
+        flex: inherit;
+    }
+    & a {
+        color: inherit;
+        text-decoration: underline;
+    }
+    & a:hover {
+        text-decoration: none;
+    }
+    & > .flex {
+        margin-top: $spacing_extra;
+    }
+    & li {
+        margin: $spacing_medium 0;
+    }
+}
+@media screen and (min-width:769px) {
+    .footer--wrapper {
+        padding: $spacing_big 0;
+    }
+}
+@media screen and (max-width:48em) {
+    .social {
+        margin-top: $spacing_extra * 2;
+        justify-content: space-evenly;
+        align-items: center;
+        display: flex;
+    }
+}
+.social-network  {
+    justify-content: center;
+    & a {
+        margin: 0 $spacing_medium;
+        &:hover {
+            opacity: .5;
+        }
+    }
+    img {
+        max-width: $spacing_extra;
+    }  
+}
+

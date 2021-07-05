@@ -1,0 +1,22 @@
+/*
+Variables et configuration globale. Cette couche affecte tout le projet, c’est donc la plus large et la plus haute.
+*/
+
+$black: #000;
+$black-footer: lighten($black, 9.5%);
+$gray-darker: lighten($black, 13.5%); // #222
+$gray-dark: lighten($black, 20%);   // #333
+$gray: lighten($black, 33.5%); // #555
+$gray-light: lighten($black, 46.7%); // #777
+$gray-lighter: lighten($black, 93.5%); // #eee
+
+$color-yellow: yellow;
+$color-white: #fff;
+
+$spacing_small: .5rem;
+$spacing_medium: 1rem;
+$spacing_big: 2rem;
+$spacing_extra: 3rem;
+$spacing_giga: 4rem;
+
+$fw-regular: 400;

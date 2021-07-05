@@ -1,0 +1,9 @@
+/*
+Styles de bas niveau ( Normalize, reset, box-sizing…) dont la spécificité est très faible.
+*/
+
+*,
+*:after,
+*:before { 
+    box-sizing: border-box; 
+}

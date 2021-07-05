@@ -1,0 +1,422 @@
+@charset "UTF-8";
+/*
+Variables et configuration globale. Cette couche affecte tout le projet, c’est donc la plus large et la plus haute.
+*/
+/*
+Mixins, helpers et fonctions. Ces outils très génériques arrivent après la couche de configuration puisqu’ils peuvent en dépendre.
+*/
+.navbar, .horizontal-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+Styles de bas niveau ( Normalize, reset, box-sizing…) dont la spécificité est très faible.
+*/
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+/*
+Couche des sélecteurs d’élément HTML : liens, paragraphes, formulaires, grille, titres… sans aucune classe ajoutée.
+*/
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-size: calc(1em * .625);
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+  min-height: 100vh;
+  color: #222222;
+  background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 400;
+  position: relative;
+  overflow-x: hidden;
+}
+
+main {
+  padding: 0 2rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: #222222;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  object-fit: contain;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+/*
+Eléments sans design qui structurent le contenu. C’est également, la première couche contenant des sélecteurs de classes.
+*/
+.body_unscroll {
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex .col {
+  flex: 1;
+  padding: 0 1rem;
+}
+
+@media screen and (max-width: 48em) {
+  .col-mobile-50 {
+    width: 50%;
+  }
+
+  .col-mobile-100 {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 769px) {
+  .col-big-33 {
+    width: 33%;
+  }
+}
+.centered {
+  text-align: center;
+}
+
+.lefted {
+  text-align: left;
+}
+
+.righted {
+  text-align: right;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only--focusable:active,
+.sr-only--focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+.skippy {
+  display: block;
+  padding: 1rem;
+  z-index: 22;
+  text-align: center;
+  outline: 0;
+}
+
+.skippy__text {
+  padding: 0.5rem;
+  outline: 2px dotted #000;
+}
+
+.title {
+  font-size: 2rem;
+}
+.title--big {
+  font-size: 3rem;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/*
+Les composants stylés, modules, morceaux d’interface... Comme pour la précédente, seuls des sélecteurs de classe y sont autorisés.
+*/
+.navbar {
+  min-height: 100vh;
+  background-image: url(assets/header-bg-2x.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: none;
+}
+.navbar.is-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar__item {
+  font-size: 3rem;
+  margin: 2rem 0;
+}
+.navbar__item:hover, .navbar__item:visited {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  .navbar__item {
+    font-size: 2vw;
+  }
+}
+@media screen and (min-width: 769px) {
+  .navbar {
+    background-color: rgba(34, 34, 34, 0.8);
+    background-image: inherit;
+    min-height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .navbar__item {
+    font-size: 1rem;
+  }
+}
+.header {
+  position: fixed;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 6px 1px #555555;
+}
+
+.navbar-burger {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  height: 3.25rem;
+  position: relative;
+  width: 3.25rem;
+  margin-left: auto;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  border: 1px solid #000;
+}
+.navbar-burger span {
+  background-color: currentColor;
+  display: block;
+  height: 2px;
+  left: calc(50% - 10px);
+  position: absolute;
+  transform-origin: center;
+  transition-duration: 86ms;
+  transition-property: background-color, opacity, transform;
+  transition-timing-function: ease-out;
+  width: 20px;
+  border: 1px solid #000;
+}
+
+.navbar-burger span:nth-child(1) {
+  top: calc(50% - 6px);
+}
+
+.navbar-burger span:nth-child(2) {
+  top: 50%;
+}
+
+.navbar-burger span:nth-child(3) {
+  top: calc(50% + 6px);
+}
+
+.navbar-burger.is-active span {
+  border-color: transparent;
+}
+
+.navbar-burger.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-burger.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-burger.is-active span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.navbar__link {
+  color: #fff;
+}
+
+@media screen and (min-width: 769px) {
+  .navbar-burger {
+    display: none;
+  }
+}
+.section-one {
+  background-image: url(assets/header-bg-2x.png);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 56vmin;
+  overflow: hidden;
+}
+.section-one .img {
+  margin: 12rem auto;
+  display: block;
+  max-width: 80vw;
+  transition: all 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 400px) {
+  .section-one {
+    min-height: 50vh;
+  }
+}
+.section--full {
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+
+@media screen and (min-width: 769px) {
+  .section-description .description__text {
+    padding-right: 3rem;
+  }
+  .section-description .img {
+    position: sticky;
+    top: 1rem;
+  }
+
+  .section-one {
+    background-size: cover;
+    min-height: 100vh;
+  }
+
+  .img-floated {
+    float: left;
+    max-width: 45%;
+    margin: 0 2rem 2rem 0;
+  }
+}
+.section--stormtroopers {
+  background-image: url(assets/stormtroopers-2x.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 30rem;
+  margin-bottom: 0;
+}
+
+.footer {
+  background-color: #181818;
+}
+
+.footer--wrapper {
+  background-image: url(assets/darthvader_2x.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 25rem;
+  color: #eeeeee;
+  font-size: 1.4rem;
+  padding: 2rem;
+}
+.footer--wrapper .col {
+  flex: inherit;
+}
+.footer--wrapper a {
+  color: inherit;
+  text-decoration: underline;
+}
+.footer--wrapper a:hover {
+  text-decoration: none;
+}
+.footer--wrapper > .flex {
+  margin-top: 3rem;
+}
+.footer--wrapper li {
+  margin: 1rem 0;
+}
+
+@media screen and (min-width: 769px) {
+  .footer--wrapper {
+    padding: 2rem 0;
+  }
+}
+@media screen and (max-width: 48em) {
+  .social {
+    margin-top: 6rem;
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+  }
+}
+.social-network {
+  justify-content: center;
+}
+.social-network a {
+  margin: 0 1rem;
+}
+.social-network a:hover {
+  opacity: 0.5;
+}
+.social-network img {
+  max-width: 3rem;
+}
+
+/*
+Les atouts, “helpers”, surcharges, exceptions. L’ultime tranche contient les sélecteurs à haute spécificité. Chaque règle ne concerne qu’un seul élément du DOM.
+*/
+@media screen and (max-width: 48em) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  a,
+.img {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

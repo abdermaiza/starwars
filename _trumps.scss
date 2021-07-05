@@ -1,0 +1,19 @@
+/*
+Les atouts, “helpers”, surcharges, exceptions. L’ultime tranche contient les sélecteurs à haute spécificité. Chaque règle ne concerne qu’un seul élément du DOM.
+*/
+
+@media screen and (max-width:48em) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+@media (prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    a,
+    .img {
+        animation: none!important;
+        transition: none!important
+    }
+}

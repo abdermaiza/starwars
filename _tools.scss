@@ -1,0 +1,27 @@
+/*
+Mixins, helpers et fonctions. Ces outils très génériques arrivent après la couche de configuration puisqu’ils peuvent en dépendre.
+*/
+
+@mixin font-brand() {
+    font-family: "UI font", sans-serif;
+    font-weight: $fw-regular;
+}
+
+@mixin img() {
+    width: 100%;
+    object-fit: contain;
+}
+@mixin flex() {
+    display: flex;
+    flex-wrap: wrap;
+}
+@mixin centerflex() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%horizontal-list {
+    display: flex;
+    flex-direction: column;
+}

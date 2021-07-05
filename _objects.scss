@@ -1,0 +1,87 @@
+/*
+Eléments sans design qui structurent le contenu. C’est également, la première couche contenant des sélecteurs de classes.
+*/
+
+.body_unscroll {
+    overflow: hidden;
+}
+.horizontal-list { 
+    @extend %horizontal-list; 
+}
+.container {
+    width: 100%;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+.section {
+    margin-bottom: $spacing_giga;
+}
+.flex {
+    @include flex();
+}
+.flex .col {
+    flex: 1;
+    padding: 0 $spacing_medium;
+}
+@media screen and (max-width:48em) {
+    .col-mobile-50 {
+        width: 50%;
+    }
+    .col-mobile-100 {
+        width: 100%;
+    }
+}
+@media screen and (min-width:769px) {
+    .col-big-33 {
+        width: 33%;
+    }
+}
+.centered {
+    text-align: center;
+}
+.lefted {
+    text-align: left;
+}
+.righted {
+    text-align: right;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0
+}
+.sr-only--focusable:active,
+.sr-only--focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal
+}
+.skippy {
+    display: block;
+    padding: $spacing_medium;
+    z-index: 22;
+    text-align: center;
+    outline: 0;
+}
+.skippy__text {
+    padding: $spacing_small;
+    outline: 2px dotted $black;
+}
+.title {
+    font-size: 2rem;
+    &--big {
+        font-size: 3rem;
+    }
+}
+.uppercase {
+    text-transform: uppercase;
+}
